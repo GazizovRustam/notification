@@ -10,44 +10,33 @@ driver.get('http://192.168.1.235/')
 def main():
     login = 'Otv_O_ShCh1_1'
     password = '123123Aa'
-    boxLogin = '//*[@id="loginField"]'
-    boxPassword = '//*[@id="passwordField"]'
-    buttonEnter = '//*[@id="formTab"]/div[3]/button'
+
     buttonTools = '//*[@id="menu"]/ul/li[3]/div[1]'
     buttonToolsList = '//*[@id="menu"]/ul/li[3]/ul/li[2]/a'
 
     """Авторизация"""
-    authorisation(login, password, boxLogin, boxPassword, buttonEnter)
+    authorisation(login, password)
 
     """Ожидаем прогрузки страницы и переход на вкладку Средства ТУ"""
     try:
         element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '/html/body/header/nav/ul/li[3]/div[2]')))
     finally:
-        clickButton(seearchBox(buttonTools))
-        clickButton(seearchBox(buttonToolsList))
+        driver.find_element(By.XPATH, buttonTools).click()
+        driver.find_element(By.XPATH, buttonToolsList).click()
         time.sleep(5)
         driver.quit()
 
 
-def authorisation(login, password, lineAddressLogin, lineAddressPassword, lineAddressEnter):
+def authorisation(login, password):
     """Ввести логин, пароль и "Войти" """
-    sendKeys(seearchBox(lineAddressLogin), login)
-    sendKeys(seearchBox(lineAddressPassword), password)
-    clickButton(seearchBox(lineAddressEnter))
 
-
-def seearchBox(path):
-    box = driver.find_element(By.XPATH, path)
-    return box
-
-
-def sendKeys(box, value):
-    box.send_keys(value)
-
-
-def clickButton(button):
-    button.click()
+    boxLogin = '//*[@id="loginField"]'
+    boxPassword = '//*[@id="passwordField"]'
+    buttonEnter = '//*[@id="formTab"]/div[3]/button'
+    driver.find_element(By.XPATH, boxLogin).send_keys(login)
+    driver.find_element(By.XPATH, boxPassword).send_keys(password)
+    driver.find_element(By.XPATH, buttonEnter).click()
 
 
 main()
