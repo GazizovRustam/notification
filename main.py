@@ -12,18 +12,34 @@ def main():
     password = '123123Aa'
     boxLogin = '//*[@id="loginField"]'
     boxPassword = '//*[@id="passwordField"]'
+    buttonEnter = '//*[@id="formTab"]/div[3]/button'
     buttonTools = '//*[@id="menu"]/ul/li[3]/div[1]'
     buttonToolsList = '//*[@id="menu"]/ul/li[3]/ul/li[2]/a'
 
-    """Найти поле ввода логин и ввести"""
-    login_box = seearchBox(boxLogin)
-    sendKeys(login_box, login)
-    """Найти поле ввода пароль и ввести"""
-    find_password_box = seearchBox(boxPassword)
-    sendKeys(find_password_box, password)
+    autorisation(login, password, boxLogin, boxPassword)
 
 
-#def autorisation(login, password):
+
+def autorisation(login, password, lineAddressLogin, lineAddressPassword):
+
+    # """Найти поле ввода логин и пароль"""
+    # inputBoxLogin = seearchBox(lineAddressLogin)
+    # inputBoxPassword = seearchBox(lineAddressPassword)
+
+    """Ввести логин и пароль"""
+    sendKeys(seearchBox(lineAddressLogin), login)
+    sendKeys(seearchBox(lineAddressPassword), password)
+
+
+    # """Нажать кнопку "Войти"""""
+    # clickEnter = seearchBox()
+    #
+    #
+    #
+    #
+    # seearchButton = driver.find_element(By.XPATH, buttonEnter)
+    # seearchButton.click()
+
 
 
 def seearchBox(path):
@@ -31,8 +47,12 @@ def seearchBox(path):
     return box
 
 
-def sendKeys(box, login):
-    box.send_keys(login)
+def sendKeys(box, value):
+    box.send_keys(value)
+
+
+def clickButton(button):
+    button.click()
 
 
 
@@ -52,6 +72,6 @@ def sendKeys(box, login):
 #     seearchButtonStu.click()
 #     searchButtonStuP = driver.find_element(By.XPATH, buttonToolsList)
 #     searchButtonStuP.click()
-#     #time.sleep(10)
-#     #driver.quit()
+#     time.sleep(3)
+#     driver.quit()
 main()
