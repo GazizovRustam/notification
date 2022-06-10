@@ -5,11 +5,11 @@ from selenium.webdriver.common.by import By
 import time
 
 driver = webdriver.Chrome()
-driver.get('http://192.168.1.235/')
+driver.get('http://aos/')
 
 def main():
 
-    buttonAddUser = '/html/body/div[3]/div/div[2]/div/div/div[1]/div[2]/div[1]/div/table/tbody/tr[1]/td[1]/div/span[1]/a/span/span[1]'
+    buttonAddUser = '//*[@id="UserTableContainer_datagrid-row-r3-2-0"]/td[1]/div/a/span/span[2]'
     buttonUser = '//*[@id="menu"]/ul/li[2]/div[1]'
     buttonTools = '//*[@id="menu"]/ul/li[3]/div[3]'
     buttonToolsList = '//*[@id="menu"]/ul/li[3]/ul/li[2]/a'
@@ -31,10 +31,10 @@ def click_button(findButton, clickButton):
 
     """Ожидаем прогрузки страницы и переход на вкладку"""
     try:
-        element = WebDriverWait(driver, 10, 2).until(
+        element = WebDriverWait(driver, 10, 5).until(
             EC.visibility_of_element_located((By.XPATH, findButton))
         )
-        driver.find_element(By.XPATH, findButton).click()
+        element.click()
         driver.find_element(By.XPATH, clickButton).click()
     except:
         # driver.quit()
@@ -50,6 +50,7 @@ def authorisation(login, password):
     boxLogin = '//*[@id="loginField"]'
     boxPassword = '//*[@id="passwordField"]'
     buttonEnter = '//*[@id="formTab"]/div[3]/button'
+
     driver.find_element(By.XPATH, boxLogin).send_keys(login)
     driver.find_element(By.XPATH, boxPassword).send_keys(password)
     driver.find_element(By.XPATH, buttonEnter).click()
