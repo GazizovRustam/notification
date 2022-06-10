@@ -11,7 +11,7 @@ def main():
 
 
     buttonUser = ''
-    buttonTools = '//*[@id="menu"]/ul/li[3]/div[1]'
+    buttonTools = '//*[@id="menu"]/ul/li[3]/div[3]'
     buttonToolsList = '//*[@id="menu"]/ul/li[3]/ul/li[2]/a'
     buttonThemeList = '//*[@id="menu"]/ul/li[4]/ul/li[2]/a'
 
