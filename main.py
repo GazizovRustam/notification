@@ -9,8 +9,8 @@ driver.get('http://192.168.1.235/')
 
 def main():
 
-
-    buttonUser = ''
+    buttonAddUser = '/html/body/div[3]/div/div[2]/div/div/div[1]/div[2]/div[1]/div/table/tbody/tr[1]/td[1]/div/span[1]/a/span/span[1]'
+    buttonUser = '//*[@id="menu"]/ul/li[2]/div[1]'
     buttonTools = '//*[@id="menu"]/ul/li[3]/div[3]'
     buttonToolsList = '//*[@id="menu"]/ul/li[3]/ul/li[2]/a'
     buttonThemeList = '//*[@id="menu"]/ul/li[4]/ul/li[2]/a'
@@ -18,11 +18,14 @@ def main():
     """Авторизация"""
     authorisation(login=login_password()[0], password=login_password()[1])
 
-    """ Переход на странице СТУ"""
-    click_button(buttonTools, buttonToolsList)
+    # """ Переход на странице СТУ"""
+    # click_button(buttonTools, buttonToolsList)
 
     """Переход на страницу Пользователи"""
+    click_button(buttonUser, buttonUser)
 
+    """Переход в карточку добаления пользователя"""
+    click_button(buttonAddUser, buttonAddUser)
 
 def click_button(findButton, clickButton):
 
@@ -34,8 +37,8 @@ def click_button(findButton, clickButton):
         driver.find_element(By.XPATH, findButton).click()
         driver.find_element(By.XPATH, clickButton).click()
     except:
-        driver.quit()
-        print("Обьект не найден!",  findButton)
+        # driver.quit()
+        print("Ошибка! Обьект не найден!",  findButton)
 
 
 
@@ -53,8 +56,8 @@ def authorisation(login, password):
 
 
 def login_password():
-    login = 'Otv_O_ShCh1_1'
-    password = '123123Aa'
+    login = 'Onil'
+    password = '1'
     return login, password
 
 
