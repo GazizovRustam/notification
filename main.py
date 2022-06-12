@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import time
 
 driver = webdriver.Chrome()
-driver.get('http://aos/')
+driver.get('http://https://www.tutu.ru//')
 
 def main():
 
