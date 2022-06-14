@@ -22,7 +22,6 @@ def get_json(path):
             date[title] = cell.value
         all_rows.append(date)
 
-
     with open(sheets, 'w', encoding='utf8') as file:
         json.dump(persons, file, indent=2, ensure_ascii=False)
 
