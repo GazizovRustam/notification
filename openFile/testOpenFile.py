@@ -7,9 +7,6 @@ count_r = [0] * sheet.max_row
 #
 def get_sheet():
 
-    # column = 0
-    # row = 1
-
     top = 0
     for column in range(0, sheet.max_column):
         date_column = sheet[1][column].value
